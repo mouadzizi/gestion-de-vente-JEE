@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:spring="http://www.springframework.org/tags"
+      xmlns:form="http://www.springframework.org/tags/form">
+
+	<h:head>  
+<title>Hello</title>  
+</h:head>  
+<h:body>  
+<h:form id="form">
+
+<label>E-mail</label>
+<h:inputText placeholder="Enter your email" value="#{loginBean.email}"/>
+
+<label>Password</label>
+<h:inputText placeholder="Enter your password" value="#{LoginBean.password}"/>
+
+<h:commandButton value="Sign In" action="response.xhtml"></h:commandButton>
+
+<h:commandButton value="Sign Up" action="response.xhtml"></h:commandButton>  
+</h:form>  
+</h:body>  
+</html>  
