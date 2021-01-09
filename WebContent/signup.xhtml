@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+<title>Sign up</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Bootstrap/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/login/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/login/util.css"/>
+<!--===============================================================================================-->
+</head>
+
+<h:body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt">
+					<img src="img/logo.png"/>
+				</div>
+
+				<h:form class="login100-form validate-form">
+				
+					<div class="wrap-input100 validate-input">
+						<h:inputText id="name" type="text" value="#{usersBean.loginUser.login}" class="input100 input"  pt:placeholder="UserName" required="true" requiredMessage="username required"  />
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<h:inputSecret id="pass" type="password" value="#{usersBean.loginUser.pass}" class="input input100" pt:placeholder="Password" required="true" requiredMessage="password required" />
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+						</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input">
+						<h:inputSecret  id="pass2" value="#{usersBean.confPassword}" class="input input100" pt:placeholder="Confirme password" required="true" requiredMessage="Confirm password required" />
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+					<h:commandButton class="login100-form-btn button" action="#{usersBean.registerMethod}" value="Create Account " ></h:commandButton>
+					</div>
+
+					<div class="text-center p-t-136">
+					Already have an account ?
+						<a class="txt2" href="index.xhtml">
+							 Log in
+							<i class="fa fa-long-arrow-right m-l-5"></i>
+						</a>
+					</div>
+					
+				</h:form>
+			</div>
+		</div>
+	</div>
+<script src="JQuery/jquery-3.2.1.min.js"></script>
+</h:body>
+</html>

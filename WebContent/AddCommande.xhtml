@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<head>
+<!--  ======================= Link Area ============================== -->
+	<link rel="stylesheet" type="text/css" href="Bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/home/style.css"/>
+<!--  ======================= Link Area ============================== -->
+
+</head>
+
+<h:body>
+    <!--  ======================= start Header Area ============================== -->
+
+	
+    <section class="form">
+    
+    <div class="container mt-5">
+    <h3 class="text-center mb-3">Add Commande</h3>
+    <div class="table-responsive">
+    
+   	<h:form>
+   	<label for="fname">Quantité</label>
+	<h:inputText id="qte" value="#{commandesBean.qteCmd}" class="form-control" pt:placeholder="Quantite" />
+
+
+    <div>
+    <h:commandButton class="btn btn-block btn-round btn-theme boutton" value="Save" action="#{commandesBean.saveCommand(nomPdt,usersBean.loginUser.login)}" />
+    </div>
+    
+    <div>
+	<button style="color: white; background-color: red; width: 100px; height: 50px; border: none; border-radius: 25pt;"> <a style="color: white;" href="Home.xhtml"> Go back </a></button>
+    </div>
+  </h:form>
+  
+    </div>
+    </div>
+    </section>
+  </h:body>
+</html>

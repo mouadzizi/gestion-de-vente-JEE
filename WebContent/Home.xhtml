@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+<!--  ======================= Link Area ============================== -->
+
+    <link rel="stylesheet" href="css/home/style.css"/>
+    <script src="JQuery/jquery.3.4.1.js"></script>
+    <script src="Bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"/>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<link href="/Bootstrap/bootstrap.min.css"/>
+<!--  ======================= Link Area ============================== -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+
+</head>
+
+<body>
+
+    <!--  ======================= start Header Area ============================== -->
+    
+    <nav>
+      <input type="checkbox" id="check"/>	
+	    
+     	 <label class="logo">Gestion de Vente</label>
+     	 
+	     <ul>
+			<li><a class="active" href="Home.xhtml">Produits</a></li>
+			<li><a href="Commande.xhtml">Commandes</a></li>
+			<li><a href="Settings.xhtml">Settings</a></li>
+			<li> <a href="index.xhtml" class="logout">Logout</a> </li>
+		</ul>
+	</nav>
+	
+    <!--  ======================= End Header Area ============================== -->
+    
+    	
+    <!--  ======================= Start Body Area ============================== -->
+    <section>
+    
+ <!--  ======================= Start Modal Area ============================== -->    
+<div class="w3-container">
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large" style="padding-right:50px; padding-left:50px; margin-top: 50px;">Ajouter Produit</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+      <div class="w3-center"><br/>
+      
+<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal"></span>
+
+      </div>
+
+      <h:form class="w3-container">
+        <div class="w3-section">
+        
+        <!-- <label><b>Code Produit</b></label>
+          <h:inputText value="#{produitsBean.theProduct.codeP}" class="w3-input w3-border w3-margin-bottom" type="text" pt:placeholder="Code Produit" />
+            --> 
+          <label><b>Nome Produit</b></label>
+         	<h:selectOneMenu value="#{produitsBean.data}">
+         		<f:selectItems value="#{produitStockBean.all}" var="ps"
+         			itemLabel="#{ps.nomPdt}"
+         			itemValue="#{ps.nomPdt}"
+         		
+         		/>
+         		
+         	</h:selectOneMenu>
+     
+          <label><b>Description</b></label>
+          <h:inputText value="#{produitsBean.descPdt}" class="w3-input w3-border w3-margin-bottom" type="text" pt:placeholder="Description Produit" />
+          <label><b>Prix Produit</b></label>
+          <h:inputText value="#{produitsBean.prixPdt}" class="w3-input w3-border w3-margin-bottom" type="text" pt:placeholder="Prix Produit" />          
+          
+          <h:commandButton value="Submit" class="w3-button w3-block w3-green w3-section w3-padding" type="submit" action="#{produitsBean.addProduit()}" />
+          
+        </div>
+      </h:form>
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+    
+
+     <!--  ======================= End Modal Area ============================== -->
+     
+     
+     
+     
+     
+    <!--  ======================= Start Table Area ============================== -->
+	
+	<div class="content mt-3">
+    <div class="col-sm-6 col-lg-3">
+   
+    
+	<b:form style="padding-right:50px; padding-left:50px; margin-top: 50px; margin-bottom: 100px; ">
+		
+		
+	    <b:dataTable value="#{produitsBean.listProduits}"
+	               page-length="5"
+	               page-length-menu="5,10,20"
+	               var="p"
+	               style=
+	               "border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+		 			
+	    <b:dataTableColumn style=
+	               "border-top: solid;
+		  			text-align:center;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+	    <f:facet name="header">
+        <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+          <li>Code Produit</li>
+        </ul>
+      </f:facet>
+      #{p.codePdt}
+      </b:dataTableColumn>
+      
+	    <b:dataTableColumn style=
+	               "border-top: solid;
+		  			text-align:center;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+	    <f:facet name="header">
+        <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+          <li>Nom Produit</li>
+        </ul>
+      </f:facet>
+      #{p.nomPdt}
+      </b:dataTableColumn>
+      
+      <b:dataTableColumn style=
+	               "text-align:center;
+	                border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+	    <f:facet name="header">
+        <ul style="margin-bottom:0;list-style-type:none;padding-left:0">
+          <li>Prix Produit</li>
+        </ul>
+      </f:facet>
+      #{p.prixPdt}
+      </b:dataTableColumn>
+      
+      <b:dataTableColumn style=
+	               "text-align:center;
+	                border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+	    <f:facet name="header">
+        <ul style="margin-bottom:0;list-style-type:none;padding-left:0;">
+          <li>Quantité Produit</li>
+        </ul>
+      </f:facet>
+      #{p.qtePdt}
+      </b:dataTableColumn>
+      
+	    <h:column pt:style="text-align:center;
+			   				border-top: solid;
+				  			border-width: 1px;
+				 			border-color: #A5A4A4; ">
+	                    <f:facet name="header">Command</f:facet>
+	                    <b:commandButton look="primary" value="Ajouter" 
+	                        action="#{produitsBean.addCommande(p.nomPdt)}"
+	                          style="	
+	                          width: 100px;
+						  	  height: 50px;
+							  background-color: #4CAF50;
+							  color: white;
+							  padding: 14px 20px;
+							  margin: 8px 0;
+							  border: none;
+							  border-radius: 4px;
+							  cursor: pointer;"
+									>
+	                    </b:commandButton>
+	    </h:column>
+	  </b:dataTable>
+
+	</b:form>
+  
+    </div>
+    </div>
+    
+ </section>
+
+    <!--  ======================= End Body Area ============================== -->
+
+
+
+  </body>
+
+</html>

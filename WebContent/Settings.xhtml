@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<head>
+<!--  ======================= Link Area ============================== -->
+	<link rel="stylesheet" type="text/css" href="Bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/home/style.css"/>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!--  ======================= Link Area ============================== -->
+
+<!--======================== Bootstrap-tables link ==================== -->
+
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css"/>
+
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<!--======================== End of tables link ==================== -->
+</head>
+
+<h:body>
+    <!--  ======================= start Header Area ============================== -->
+    <nav>
+      <input type="checkbox" id="check"/>
+	   	<label for="check" class="checkbtn">
+	        <i class="fas fa-bars"></i>
+	    </label>
+	    
+     	 <label class="logo">Gestion de Vente</label>
+     	 
+	     <ul>
+			<li><a href="Home.xhtml">Produits</a></li>
+			<li><a href="Commande.xhtml">Commandes</a></li>
+			<li><a class="active" href="Settings.xhtml">Settings</a></li>
+			<li> <a href="index.xhtml" class="logout">Logout</a> </li>
+		</ul>
+	</nav>
+	
+    <section class="form">
+    
+    <div class="container mt-5">
+    <h3 class="text-center mb-3">Settings Profil</h3>
+    <div class="table-responsive">
+    
+   	<h:form>
+   	<label for="fname">Enter your password</label>
+   	<h:inputSecret class="form-control" id="pass" value="#{usersBean.pass}" pt:placeholder="Enter your password" />
+   	
+    <label for="fname">New password</label>
+    <h:inputSecret class="form-control input" id="newPass" value="#{usersBean.newPass}" pt:placeholder="New password"/>
+    
+
+    <label for="lname">Confirme your password</label>    
+    <h:inputSecret class="form-control input" id="passwordC" value="#{usersBean.confPassword}" pt:placeholder="Rpeat the new password"/>
+  
+
+    <div>
+    <h:commandButton class="btn btn-block btn-round btn-theme boutton" value="Save" action="#{usersBean.Edit}" />
+    </div>
+  </h:form>
+  
+    </div>
+    </div>
+    </section>
+  </h:body>
+</html>

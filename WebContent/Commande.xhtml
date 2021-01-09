@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<head>
+
+<!--======================= Link Area ============================== -->
+<link rel="stylesheet" href="css/home/style.css" />
+<script src="JQuery/jquery.3.4.1.js"></script>
+<script src="Bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" />
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<link href="/Bootstrap/bootstrap.min.js" />
+
+<!--======================== End of tables link ==================== -->
+</head>
+
+<body>
+
+	<nav> <input type="checkbox" id="check" /> <label for="check"
+		class="checkbtn"> <i class="fas fa-bars"></i>
+	</label> <label class="logo">Gestion de Vente</label>
+	<ul>
+		<li><a href="Home.xhtml">Produits</a></li>
+		<li><a class="active" href="Commande.xhtml">Commandes</a></li>
+		<li><a href="Settings.xhtml">Settings</a></li>
+		<li><a href="index.xhtml" class="logout">Logout</a></li>
+	</ul>
+	</nav>
+
+	<!--  ======================= End Header Area ============================== -->
+	<section> <!--  ======================= Start Form Area ============================== -->
+	<div class="content mt-3">
+		<div class="col-sm-6 col-lg-3">
+			<b:form
+				style="padding-right:50px; padding-left:50px; margin-top: 50px">
+
+				<b:dataTable style="width:100%;"
+					value="#{commandesBean.getCommandList(usersBean.loginUser.login)}"
+					page-length="5" page-length-menu="5,10,20" var="c">
+
+					<b:dataTableColumn
+						style="text-align:center;
+	                border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+						<f:facet name="header">
+							<ul
+								style="margin-bottom: 0; list-style-type: none; padding-left: 0">
+								<li>Code de Commande</li>
+							</ul>
+						</f:facet>
+						<h:inputText value="#{c.codeCmd}" size="10"
+							rendered="#{commandeBean.editable}" />
+
+						<h:outputText value="#{c.codeCmd}"
+							rendered="#{not commandeBean.editable}" />
+					</b:dataTableColumn>
+
+
+					<b:dataTableColumn
+						style="text-align:center;
+	                border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+						<f:facet name="header">
+							<ul
+								style="margin-bottom: 0; list-style-type: none; padding-left: 0">
+								<li>User</li>
+							</ul>
+						</f:facet>
+						<h:inputText value="#{c.users.login}" size="10"
+							rendered="#{commandeBean.editable}" />
+
+						<h:outputText value="#{c.users.login}"
+							rendered="#{not commandeBean.editable}" />
+					</b:dataTableColumn>
+
+					<b:dataTableColumn
+						style="text-align:center;
+	                border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+						<f:facet name="header">
+							<ul
+								style="margin-bottom: 0; list-style-type: none; padding-left: 0">
+								<li>Nom de Produit</li>
+							</ul>
+						</f:facet>
+						<h:inputText value=" #{c.produitsPrix.nomP}" size="10"
+							rendered="#{commandeBean.editable}" />
+
+						<h:outputText value=" #{c.produitsPrix.nomP}"
+							rendered="#{not commandeBean.editable}" />
+
+
+					</b:dataTableColumn>
+
+					<b:dataTableColumn
+						style="text-align:center;
+	                border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+						<f:facet name="header">
+							<ul
+								style="margin-bottom: 0; list-style-type: none; padding-left: 0">
+								<li>Date</li>
+							</ul>
+						</f:facet>
+												<h:inputText value="  #{c.dateCmd}" size="10"
+							rendered="#{commandeBean.editable}" />
+
+						<h:outputText value=" #{c.dateCmd}"
+							rendered="#{not commandeBean.editable}" />
+     
+    </b:dataTableColumn>
+
+					<h:column
+						pt:style="text-align:center;
+	                border-top: solid;
+		  			border-width: 1px;
+		 			border-color: #A5A4A4;">
+						<f:facet name="header"> Actions </f:facet>
+	
+						<b:commandButton look="primary" value="save"
+							action="#{commandesBean.saveAction()}"
+							style="	
+	                        	  text-align:center;
+		                          width: 100px;
+							  	  height: 50px; 
+							  	  margin-left: 5rem;
+								  background-color: #46B0E9;
+								  color: white;
+								  border: none;
+								  border-radius: 4px;
+								  cursor: pointer;"
+								  rendered="#{commandeBean.editable}">
+						</b:commandButton>
+
+						<b:commandButton look="primary" value="PDF"
+							action="#{commandesBean.printPDF(c.codeCmd)}"
+							style="	
+	                        	 text-align:center;
+		                          width: 100px;
+							  	  height: 50px;
+							  	  margin-left :2rem;
+								  background-color: #F7994A;
+								  color: white;
+								  border: none;
+								  border-radius: 4px;
+								  cursor: pointer;">
+						</b:commandButton>
+
+						<b:commandButton look="primary" value="Delete"
+							action="#{commandesBean.removeCmd(c)}"
+							style="	
+	                        	 text-align:center;
+		                          width: 100px;
+							  	  height: 50px;
+							  	  margin-left :2rem;
+								  background-color: #F23A11;
+								  color: white;
+								  border: none;
+								  border-radius: 4px;
+								  cursor: pointer;"
+								  >
+						</b:commandButton>
+
+					</h:column>
+				</b:dataTable>
+			</b:form>
+
+		</div>
+	</div>
+	</section>
+	<!--  ======================= End Form Area ============================== -->
+</body>
+</html>

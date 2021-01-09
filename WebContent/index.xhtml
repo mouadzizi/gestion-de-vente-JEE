@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+<title>Gestion de vente</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Bootstrap/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/login/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/login/util.css"/>
+<!--===============================================================================================-->
+</head>
+
+<h:body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt">
+					<img src="img/logo.png"/>
+				</div>
+
+				<h:form class="login100-form validate-form">	
+          
+					<div class="wrap-input100 validate-input">
+						<h:inputText id="name" class="input100 input" value="#{usersBean.loginUser.login}" pt:placeholder="E-mail"/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<h:inputSecret id="pass" value="#{usersBean.loginUser.pass}" class="input100 input" pt:placeholder="Password"/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+					<h:commandButton class="btn btn-block btn-round btn-theme button login100-form-btn" action="#{usersBean.loginMethod()}" value="Login"/>
+						
+					<div class="text-center p-t-136">
+						you are new ? 
+						<a class="txt2" href="signup.xhtml">
+							Create your Account !
+							<i class="fa fa-long-arrow-right m-l-5"></i>
+						</a>
+					</div>
+					</div>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+	
+</h:body>
+</html>
